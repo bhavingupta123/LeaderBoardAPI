@@ -2,15 +2,16 @@ package com.example.leaderboardgame.rest;
 
 import com.example.leaderboardgame.pojo.LeaderBoard;
 import com.example.leaderboardgame.service.LeaderBoardService;
-import com.example.leaderboardgame.service.impl.LeaderBoardServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class LeaderboardController {
     LeaderBoardService leaderBoardService;
 
     @RequestMapping("/get/leaderboard/{gameId}")
-    public ResponseEntity<List<LeaderBoard>> getLeaderBoardForAGame(@PathVariable("gameId") Long gameId, Model model){
+    public ResponseEntity<List<LeaderBoard>> getLeaderBoardForAGame(@Validated @PathVariable("gameId") Long gameId, Model model){
         logger.info("Getting leaderboard for gameId: {}", gameId);
 
         try {

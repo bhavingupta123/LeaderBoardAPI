@@ -2,12 +2,12 @@ package com.example.leaderboardgame.service.impl;
 
 import com.example.leaderboardgame.pojo.LeaderBoard;
 import com.example.leaderboardgame.repo.LeaderBoardRepository;
-import com.example.leaderboardgame.rest.LeaderboardController;
 import com.example.leaderboardgame.service.LeaderBoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service

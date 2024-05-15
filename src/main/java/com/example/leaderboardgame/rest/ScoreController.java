@@ -9,12 +9,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
+@Validated
 public class ScoreController {
 
     @Autowired
@@ -22,6 +25,7 @@ public class ScoreController {
 
     @PostMapping("save/score")
     public ResponseEntity<String> saveScore(@RequestBody LeaderBoard score) {
+
         try {
             scoreService.saveScore(score);
             return ResponseEntity.status(HttpStatus.CREATED).body("Score saved successfully");

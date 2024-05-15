@@ -8,9 +8,14 @@ public class LeaderBoard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long playerId;
+
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private Long score;
+
+    @Column(nullable = false)
     private Long gameId;
 
     public Long getPlayerId() {
