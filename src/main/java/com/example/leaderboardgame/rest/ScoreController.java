@@ -2,31 +2,31 @@ package com.example.leaderboardgame.rest;
 
 import com.example.leaderboardgame.pojo.LeaderBoard;
 import com.example.leaderboardgame.service.ScoreService;
-import com.example.leaderboardgame.service.impl.LeaderBoardServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.stream.Collectors;
 
+/**
+ * REST controller for managing score-related operations.
+ */
 @RestController
 @RequestMapping("/api")
-@Validated
 public class ScoreController {
 
     @Autowired
     ScoreService scoreService;
 
-    @PostMapping("save/score")
+    /**
+     * Endpoint to save a player's score.
+     *
+     * @param score The LeaderBoard object containing the player's score information.
+     * @return A ResponseEntity indicating the success or failure of the operation.
+     */
+    @PostMapping("/save/score")
     public ResponseEntity<String> saveScore(@RequestBody @Valid LeaderBoard score) {
-
         try {
             scoreService.saveScore(score);
             return ResponseEntity.status(HttpStatus.CREATED).body("Score saved successfully");

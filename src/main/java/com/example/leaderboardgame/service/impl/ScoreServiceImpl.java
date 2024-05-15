@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * Implementation of the ScoreService interface.
+ */
 @Service
 public class ScoreServiceImpl implements ScoreService {
 
@@ -17,6 +20,12 @@ public class ScoreServiceImpl implements ScoreService {
     @Autowired
     private ScoreRepository scoreRepository;
 
+    /**
+     * Saves the score of a player for a particular game.
+     * @param leaderBoard The LeaderBoard object representing the player's score and game details.
+     * @throws IllegalArgumentException if the LeaderBoard object is null, or if any of its fields are invalid.
+     * @throws RuntimeException if an error occurs while saving the score.
+     */
     @Override
     @Transactional
     public void saveScore(LeaderBoard leaderBoard) {
@@ -40,7 +49,7 @@ public class ScoreServiceImpl implements ScoreService {
             throw new IllegalArgumentException("Invalid score");
         }
 
-        logger.info("Saving score for : {}", leaderBoard);
+        logger.info("Saving score for: {}", leaderBoard);
 
         // Save the score
         try {
