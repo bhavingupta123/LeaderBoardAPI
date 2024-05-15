@@ -1,6 +1,7 @@
 package com.example.leaderboardgame.pojo;
 
 import jakarta.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class LeaderBoard {
@@ -10,12 +11,15 @@ public class LeaderBoard {
     private Long playerId;
 
     @Column(nullable = false)
+    @NotNull
     private String name;
 
     @Column(nullable = false)
+    @NotNull
     private Long score;
 
     @Column(nullable = false)
+    @NotNull
     private Long gameId;
 
     public Long getPlayerId() {

@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +25,7 @@ public class ScoreController {
     ScoreService scoreService;
 
     @PostMapping("save/score")
-    public ResponseEntity<String> saveScore(@RequestBody LeaderBoard score) {
+    public ResponseEntity<String> saveScore(@RequestBody @Valid LeaderBoard score) {
 
         try {
             scoreService.saveScore(score);

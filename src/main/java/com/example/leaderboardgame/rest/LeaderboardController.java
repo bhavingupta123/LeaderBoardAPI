@@ -9,10 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
@@ -24,8 +24,8 @@ public class LeaderboardController {
     @Autowired
     LeaderBoardService leaderBoardService;
 
-    @RequestMapping("/get/leaderboard/{gameId}")
-    public ResponseEntity<List<LeaderBoard>> getLeaderBoardForAGame(@Validated @PathVariable("gameId") Long gameId, Model model){
+    @GetMapping("/get/leaderboard")
+    public ResponseEntity<List<LeaderBoard>> getLeaderBoardForAGame(@NotNull(message = "Game ID cannot be null") @RequestParam("gameId") Long gameId, Model model){
         logger.info("Getting leaderboard for gameId: {}", gameId);
 
         try {
